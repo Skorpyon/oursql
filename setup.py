@@ -51,7 +51,7 @@ oursql_ext = MysqlExtension("oursql", ["oursqlx/compat.c"])
 try:
     from Cython.Distutils import build_ext
 except ImportError:
-    print "cython not found, using previously-cython'd .c file."
+    print("cython not found, using previously-cython'd .c file.")
     oursql_ext.sources.insert(0, 'oursqlx/oursql.c')
 else:
     oursql_ext.sources.insert(0, 'oursqlx/oursql.pyx')
@@ -87,11 +87,11 @@ class oursql_build_ext(build_ext):
     
     def get_mysql_config(self, option):
         args = [self.mysql_config, '--%s' % option]
-        print ' '.join(args)
+        print(' '.join(args))
         try:
             proc = subprocess.Popen(args, stdout=subprocess.PIPE)
         except:
-            print 'failed to execute', args[0]
+            print('failed to execute', args[0])
             raise
         stdout, _ = proc.communicate()
         return split_quoted(stdout.strip())
@@ -142,7 +142,7 @@ class oursql_build_ext(build_ext):
                 if _winreg:
                     self.setup_windowsish(ext)
                 else:
-                    print ('warning: no usable mysql_config and no _winreg '
+                    print('warning: no usable mysql_config and no _winreg '
                         'module to try; hopefully you have usable '
                         'CFLAGS/LDFLAGS set.')
             else:
