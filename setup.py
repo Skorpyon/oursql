@@ -1,3 +1,4 @@
+from __future__ import print_function
 from distutils.cmd import Command
 from distutils.core import setup
 from distutils.util import split_quoted
